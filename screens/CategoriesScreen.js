@@ -4,11 +4,23 @@ import { FlatList, Text, View } from "react-native";
 import { CATEGORIES } from "../data/dummy-data";
 import CategoryGridTyle from "../components/CategoryGridTyle";
 
-const renderCategoryItem = (itemData) => (
-  <CategoryGridTyle title={itemData.item.title} color={itemData.item.color} />
-);
+const CategoriesScreen = ({ navigation }) => {
+  //can use useNavigation hook to get to navigation object, especially in nested objects
+  const renderCategoryItem = (itemData) => {
+    const pressHandler = () => {
+      navigation.navigate("MealsOverview", {
+        categoryId: itemData.item.id,
+      });
+    };
 
-const CategoriesScreen = () => {
+    return (
+      <CategoryGridTyle
+        title={itemData.item.title}
+        color={itemData.item.color}
+        onPress={pressHandler}
+      />
+    );
+  };
   return (
     <FlatList
       data={CATEGORIES}
