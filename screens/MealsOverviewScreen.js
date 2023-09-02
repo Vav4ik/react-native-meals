@@ -13,7 +13,7 @@ const MealsOverviewScreen = ({ route, navigation }) => {
   );
 
   //this is almost the same as useEffect, but it runs simultaniously
-  //with component render (render waits a bit, I think) to make it visually nice, no jumps 
+  //with component render (render waits a bit, I think) to make it visually nice, no jumps
   useLayoutEffect(() => {
     const categoryTitle = CATEGORIES.find(
       (category) => category.id === catId
@@ -24,9 +24,7 @@ const MealsOverviewScreen = ({ route, navigation }) => {
     });
   }, [catId, navigation]);
 
-  const renderMealItem = (itemData) => {
-    return <MealItem meal={itemData.item} />;
-  };
+  const renderMealItem = (itemData) => <MealItem meal={itemData.item} />;
 
   return (
     <View style={styles.container}>
