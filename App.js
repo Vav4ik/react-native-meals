@@ -1,6 +1,7 @@
 import "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet } from "react-native";
+import { Provider } from "react-redux";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
@@ -10,7 +11,8 @@ import CategoriesScreen from "./screens/CategoriesScreen";
 import MealsOverviewScreen from "./screens/MealsOverviewScreen";
 import MealDetailScreen from "./screens/MealDetailScreen";
 import FavouritesScreen from "./screens/FavouritesScreen";
-import FavouritesContextProvider from "./store/context/favourits.context";
+import { store } from "./store/redux/store";
+// import FavouritesContextProvider from "./store/context/favourits.context";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -56,7 +58,8 @@ export default function App() {
   return (
     <>
       <StatusBar style="light" />
-      <FavouritesContextProvider>
+      <Provider store={store}>
+        {/* <FavouritesContextProvider> */}
         <NavigationContainer>
           <Stack.Navigator
             screenOptions={{
@@ -86,7 +89,8 @@ export default function App() {
             />
           </Stack.Navigator>
         </NavigationContainer>
-      </FavouritesContextProvider>
+        {/* </FavouritesContextProvider> */}
+      </Provider>
     </>
   );
 }
